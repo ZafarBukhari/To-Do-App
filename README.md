@@ -61,7 +61,7 @@ pip install -r requirements.txt
 ### Initialize
 
 ```bash
-todo init
+python -m todo_cli.main init
 ```
 
 This creates the data directory at `~/.todo/` with:
@@ -311,12 +311,12 @@ python -m todo_cli.main search "meeting" --tag work --project "Q1"
 Undo the last destructive action (delete, edit, complete).
 
 ```bash
-todo undo-last
+python -m todo_cli.main undo-last
 ```
 
 **Examples:**
 ```bash
-todo undo-last
+python -m todo_cli.main undo-last
 ```
 
 ### Configuration
@@ -325,10 +325,10 @@ Set or view configuration values.
 
 ```bash
 # View current configuration
-todo config
+python -m todo_cli.main config
 
 # Set configuration value
-todo config set <key> <value>
+python -m todo_cli.main config set <key> <value>
 ```
 
 **Configuration Keys:**
@@ -341,19 +341,19 @@ todo config set <key> <value>
 **Examples:**
 ```bash
 # View configuration
-todo config
+python -m todo_cli.main config
 
 # Set default priority
-todo config set default_priority high
+python -m todo_cli.main config set default_priority high
 
 # Disable colors
-todo config set color_enabled false
+python -m todo_cli.main config set color_enabled false
 
 # Set custom editor
-todo config set editor vim
+python -m todo_cli.main config set editor vim
 
 # Change date format
-todo config set date_format "%d/%m/%Y"
+python -m todo_cli.main config set date_format "%d/%m/%Y"
 ```
 
 ### Initialize
@@ -361,10 +361,31 @@ todo config set date_format "%d/%m/%Y"
 Initialize the To-Do application (create data directory).
 
 ```bash
-todo init
+python -m todo_cli.main init
 ```
 
 This command creates necessary files and directories if they don't exist.
+
+### Help
+
+Show help information.
+
+```bash
+# Show general help
+python -m todo_cli.main --help
+
+# Show help for a specific command
+python -m todo_cli.main add --help
+python -m todo_cli.main list --help
+python -m todo_cli.main edit --help
+python -m todo_cli.main done --help
+python -m todo_cli.main undo --help
+python -m todo_cli.main delete --help
+python -m todo_cli.main search --help
+python -m todo_cli.main config --help
+python -m todo_cli.main undo-last --help
+python -m todo_cli.main init --help
+```
 
 ## Configuration File
 
@@ -439,59 +460,60 @@ Supported date formats:
 
 ```bash
 # Add morning tasks
-todo add "Check emails" --priority low
-todo add "Team standup" --due 2026-01-07T09:00:00 --priority medium --tag meeting
-todo add "Submit report" --priority high --tag work,urgent
+python -m todo_cli.main add "Check emails" --priority low
+python -m todo_cli.main add "Team standup" --due 2026-01-07T09:00:00 --priority medium --tag meeting
+python -m todo_cli.main add "Submit report" --priority high --tag work,urgent
 
 # Mark completed
-todo done 1
+python -m todo_cli.main done 1
 
 # View remaining tasks
-todo list --pending
+python -m todo_cli.main list --pending
 ```
 
 ### Project-Based Organization
 
 ```bash
 # Add tasks for different projects
-todo add "Design API" --project "Project Alpha" --tag development,backend
-todo add "Write tests" --project "Project Alpha" --tag testing
-todo add "Update docs" --project "Project Beta" --tag documentation
+python -m todo_cli.main add "Design API" --project "Project Alpha" --tag development,backend
+python -m todo_cli.main add "Write tests" --project "Project Alpha" --tag testing
+python -m todo_cli.main add "Update docs" --project "Project Beta" --tag documentation
 
 # View tasks by project
-todo list --project "Project Alpha"
-todo list --project "Project Beta"
+python -m todo_cli.main list --project "Project Alpha"
+python -m todo_cli.main list --project "Project Beta"
+```
 
 ### Tag-Based Filtering
 
 ```bash
 # Add tagged tasks
-todo add "Pay bills" --tag finance --priority high
-todo add "Code review" --tag work,review --priority medium
-todo add "Buy groceries" --tag personal --priority low
+python -m todo_cli.main add "Pay bills" --tag finance --priority high
+python -m todo_cli.main add "Code review" --tag work,review --priority medium
+python -m todo_cli.main add "Buy groceries" --tag personal --priority low
 
 # Filter by specific tag
-todo list --tag finance
-todo list --tag work
-todo list --tag personal
+python -m todo_cli.main list --tag finance
+python -m todo_cli.main list --tag work
+python -m todo_cli.main list --tag personal
 
 # Search across tags
-todo search --tag review
+python -m todo_cli.main search --tag review
 ```
 
 ### Due Date Management
 
 ```bash
 # Add tasks with due dates
-todo add "Submit report" --due 2026-01-10 --priority high
-todo add "Renew license" --due tomorrow --tag urgent
-todo add "Plan vacation" --due +30 --priority low
+python -m todo_cli.main add "Submit report" --due 2026-01-10 --priority high
+python -m todo_cli.main add "Renew license" --due tomorrow --tag urgent
+python -m todo_cli.main add "Plan vacation" --due +30 --priority low
 
 # View overdue tasks
-todo list --overdue
+python -m todo_cli.main list --overdue
 
 # Sort by due date
-todo list --sort due_date
+python -m todo_cli.main list --sort due_date
 ```
 
 ## Command Reference
@@ -532,7 +554,7 @@ Copyright (c) 2026 Syed Zafar Abbas
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation of rights
+in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
 of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
@@ -547,6 +569,10 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+## About Author
+
+**Syed Zafar Abbas** is a software engineer and ML/AI specialist based in Islamabad, Pakistan. With expertise spanning machine learning, data science, and full-stack development, he creates practical solutions for complex problems. Connect with him on GitHub at [github.com/ZafarBukhari](https://github.com/ZafarBukhari).
 
 ## Contributing
 
